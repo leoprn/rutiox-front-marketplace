@@ -3,6 +3,33 @@ import { useParams } from 'react-router-dom';
 import { getWorkshopBySlug, NotFoundError } from '../api';
 import type { WorkshopProfile } from '../types';
 
+const ICON_MAP: Record<string, string> = {
+  'gauge':               '🛢️',
+  'wrench':              '🔧',
+  'settings-2':          '⚙️',
+  'disc-3':              '🔵',
+  'circle-dot':          '🛞',
+  'zap':                 '⚡',
+  'snowflake':           '❄️',
+  'spray-can':           '🎨',
+  'panel-top':           '🪟',
+  'fuel':                '⛽',
+  'sparkles':            '✨',
+  'droplets':            '💧',
+  'shield-check':        '🛡️',
+  'life-buoy':           '🆘',
+  'file-text':           '📄',
+  'wrench-screwdriver':  '🔧',
+  'bolt':                '⚡',
+  'settings':            '⚙️',
+  'shield':              '🛡️',
+};
+
+function categoryIcon(iconName: string | null): string {
+  if (!iconName) return '🔩';
+  return ICON_MAP[iconName] ?? '🔩';
+}
+
 export default function WorkshopProfilePage() {
   const { slug } = useParams<{ slug: string }>();
   const [workshop, setWorkshop] = useState<WorkshopProfile | null>(null);
@@ -66,7 +93,7 @@ export default function WorkshopProfilePage() {
             <div style={styles.pills}>
               {workshop.categories.map((c) => (
                 <span key={c.id} style={styles.pill}>
-                  {c.iconEmoji} {c.name}
+                  {categoryIcon(c.iconEmoji)} {c.name}
                 </span>
               ))}
             </div>
@@ -100,7 +127,7 @@ export default function WorkshopProfilePage() {
         {/* CTA */}
         <div style={styles.cta}>
           <a
-            href={`https://api.rutiox.com`}
+            href="https://rutiox.com"
             style={styles.ctaButton}
           >
             Pedir turno en RutioX
