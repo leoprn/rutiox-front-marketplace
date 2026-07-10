@@ -124,17 +124,6 @@ export default function WorkshopProfilePage() {
           </Section>
         )}
 
-        {/* CTA */}
-        <div style={styles.cta}>
-          <a
-            href="https://rutiox.com"
-            style={styles.ctaButton}
-          >
-            Pedir turno en RutioX
-          </a>
-          <p style={styles.ctaHint}>Descargá la app y reservá tu turno en segundos</p>
-        </div>
-
         {/* Footer */}
         <div style={styles.footer}>
           <span style={styles.footerLogo}>RutioX</span>
